@@ -48,6 +48,19 @@ return {
       -- You can put your default mappings / updates / etc. in here
       --  All the info you're looking for is in `:help telescope.setup()`
       defaults = {
+
+        -- #phind.com answer to how can telescope also show files that start with a dot. so i can select for example .env
+        vimgrep_arguments = {
+          'rg',
+          '--color=never',
+          '--no-heading',
+          '--with-filename',
+          '--line-number',
+          '--column',
+          '--smart-case',
+          '--hidden',
+        },
+
         mappings = {
           i = {
             ['<C-k>'] = require('telescope.actions').move_selection_previous, -- move to prev result
@@ -56,7 +69,8 @@ return {
           },
         },
       },
-      pickers = {
+      pickers = {},
+      pickers_1 = {
         find_files = {
           file_ignore_patterns = { 'node_modules', '.git', '.venv' },
           hidden = true,
